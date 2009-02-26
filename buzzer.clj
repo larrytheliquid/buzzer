@@ -4,7 +4,7 @@
   (.contains candidate buzzword))
 
 (defn find-buzzwords [candidate buzzwords]
-  ["ajax"])
+  (filter #(buzzword? candidate %) buzzwords))
 
 (def buzzwords ["ajax" "dsl" "rest"])
 (def non-buzzwords ["apple" "cat" "house"])
@@ -24,7 +24,9 @@
   (false? (buzzword? candidate buzzword)))
 
 (fact "find-buzzwords: a list of buzzwords found in the candidate"
-  [[candidate found] {["apple ajax orange"] ["ajax"]}]
+  [[candidate found] {"apple ajax orange" ["ajax"]
+		      "apple ajax grape rest orange" ["ajax" "rest"]
+		      "apple grape orange" nil}]
   (= found (find-buzzwords candidate buzzwords)))
 
 (.println *test-out* "buzzer:")
