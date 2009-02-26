@@ -1,7 +1,7 @@
 (ns buzzer (:use fact))
 
 (defn buzzword? [candidate buzzword]
-  true)
+  (= candidate buzzword))
 
 (fact "buzzword?: true when string equals given buzzword" 
   [buzzword ["ajax" "dsl" "rest"]]
@@ -17,6 +17,5 @@
 (.println *test-out*)
 ;; buzzer:
 ;; - buzzword?: false when string does not equal given buzzword
-;;   FAILURE WHEN: candidate = "apple", buzzword = "ajax"
 ;; - buzzword?: true when string equals given buzzword
-;; 2 facts, 0 pending, 1 failed, 0 exceptions
+;; 2 facts, 0 pending, 0 failed, 0 exceptions
