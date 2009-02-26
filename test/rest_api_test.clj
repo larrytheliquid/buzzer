@@ -16,10 +16,14 @@
   [non-buzzword ["apple" "orange" "grape" "cherry"]]
   (= "false" (get-body (str "/buzzword/" non-buzzword))))
 
+(fact "GET /api-hits: number of hits api has received" []
+  (get-body "/buzzword/not-a-buzzword")
+  (not= "0" (get-body "/api-hits")))
+
 (.println *test-out* "test.buzzer.rest-api:")
 (try 
  (start test-server)
  (print-color-results (verify-facts 'test.buzzer.rest-api))
- (finally (stop test-server)))
+ (finally (stop test-server) 
+	  (shutdown-agents )))
 (.println *test-out*)
-
