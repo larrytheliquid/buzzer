@@ -12,7 +12,9 @@
 
 (fact "buzzword?: false when string does not equal given buzzword" 
   [candidate non-buzzwords
-   buzzword (repeat (first buzzwords))]
+   buzzword (repeatedly (fn [] 
+			  (nth buzzwords 
+			       (rand-int (count buzzwords)))))]
   (false? (buzzword? candidate buzzword)))
 
 (.println *test-out* "buzzer:")
