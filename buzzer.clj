@@ -4,7 +4,7 @@
   true)
 
 (fact "buzzword?: true when string equals given buzzword" 
-  [buzzword (vector "ajax" "dsl" "rest")]
+  [buzzword ["ajax" "dsl" "rest"]]
   (buzzword? buzzword buzzword))
 
 (.println *test-out* "buzzer:")
