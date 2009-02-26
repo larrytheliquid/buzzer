@@ -3,12 +3,15 @@
 (defn buzzword? [candidate buzzword]
   (= candidate buzzword))
 
+(def buzzwords ["ajax" "dsl" "rest"])
+(def non-buzzwords ["apple" "cat" "house"])
+
 (fact "buzzword?: true when string equals given buzzword" 
-  [buzzword ["ajax" "dsl" "rest"]]
+  [buzzword buzzwords]
   (buzzword? buzzword buzzword))
 
 (fact "buzzword?: false when string does not equal given buzzword" 
-  [candidate ["apple" "cat" "house"]
+  [candidate non-buzzwords
    buzzword (repeat "ajax")]
   (false? (buzzword? candidate buzzword)))
 
