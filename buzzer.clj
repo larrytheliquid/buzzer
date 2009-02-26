@@ -1,3 +1,5 @@
+(ns buzzer)
+
 (defn buzzword? [candidate buzzword]
   true)
 
