@@ -9,7 +9,7 @@
 
 (fact "buzzword?: false when string does not equal given buzzword" 
   [candidate ["apple" "cat" "house"]
-   buzzword (take 3 (repeat "ajax"))]
+   buzzword (repeat "ajax")]
   (false? (buzzword? candidate buzzword)))
 
 (.println *test-out* "buzzer:")
