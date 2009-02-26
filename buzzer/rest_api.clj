@@ -1,4 +1,6 @@
-(ns buzzer.rest-api (:use buzzer compojure))
+(ns buzzer.rest-api 
+  (:require (org.danlarkin [json :as json]))
+  (:use buzzer compojure))
 
 (def server-buzzwords ["ajax" "dsl" "rest"])
 
@@ -7,11 +9,12 @@
 (defservlet buzzer-servlet
   (GET "/buzzword/:candidate"
     (dosync (send *api-hits* inc))
-    (if (empty? (find-buzzwords (route :candidate) server-buzzwords)) 
-      "false" "true"))
+    (json/encode-to-str 
+     (not (empty? (find-buzzwords (route :candidate) server-buzzwords)))))
 
   (GET "/api-hits"
-    (str @*api-hits*)))
+    (json/encode-to-str 
+     @*api-hits*)))
 
 
 
