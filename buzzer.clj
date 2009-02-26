@@ -1,6 +1,6 @@
 (defn buzzword? [candidate buzzword]
-  false)
+  true)
 
 ;;; true when string equals given buzzword
 (prn (buzzword? "ajax" "ajax"))
-;;; false
+;;; true
