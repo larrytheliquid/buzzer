@@ -11,7 +11,9 @@
   (buzzword? buzzword buzzword))
 
 (fact "buzzword?: true when string contains given buzzword" 
-  [candidate ["start ajax end" "start dsl end" "start rest end"]
+  [candidate [(str "start " "ajax" " end")
+	      (str "start " "dsl" " end")
+	      (str "start " "rest" " end")]
    buzzword buzzwords]
   (buzzword? candidate buzzword))
 
