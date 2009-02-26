@@ -11,9 +11,9 @@
   (buzzword? buzzword buzzword))
 
 (fact "buzzword?: true when string contains given buzzword" 
-  [candidate [(str "start " "ajax" " end")
-	      (str "start " "dsl" " end")
-	      (str "start " "rest" " end")]
+  [candidate (map (fn [buzzword] 
+		    (str "start " buzzword " end"))
+		  buzzwords)
    buzzword buzzwords]
   (buzzword? candidate buzzword))
 
