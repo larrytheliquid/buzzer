@@ -1,7 +1,7 @@
 (ns buzzer (:use fact))
 
 (defn buzzword? [candidate buzzword]
-  (. candidate (contains buzzword)))
+  (.contains candidate buzzword))
 
 (def buzzwords ["ajax" "dsl" "rest"])
 (def non-buzzwords ["apple" "cat" "house"])
