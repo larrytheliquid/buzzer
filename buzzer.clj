@@ -2,4 +2,5 @@
   false)
 
 ;;; true when string equals given buzzword
-(buzzword? "ajax" "ajax")
+(prn (buzzword? "ajax" "ajax"))
+;;; false
