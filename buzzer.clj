@@ -12,8 +12,7 @@
 
 (fact "buzzword?: false when string does not equal given buzzword" 
   [candidate non-buzzwords
-   buzzword (repeatedly #(nth buzzwords 
-			      (rand-int (count buzzwords))))]
+   buzzword (rand-elems buzzwords)]
   (false? (buzzword? candidate buzzword)))
 
 (.println *test-out* "buzzer:")
