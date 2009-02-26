@@ -5,11 +5,16 @@
   {:port 8081} 
   "/*" buzzer-servlet)
 
-(fact "GET /buzzword/ajax: 'true'" []
-  (= "true" (last (http-get "http://localhost:8081/buzzword/ajax"))))
+(defn get-body [path]
+  (last (http-get (str "http://localhost:8081" path))))
 
-(fact "GET /buzzword/cat: 'false'" []
-  (= "false" (last (http-get "http://localhost:8081/buzzword/cat"))))
+(fact "GET /buzzword/ajax: 'true' when a buzzword"
+  [buzzword server-buzzwords]
+  (= "true" (get-body (str "/buzzword/" buzzword))))
+
+(fact "GET /buzzword/cat: 'false' when not a buzzword" 
+  [non-buzzword ["apple" "orange" "grape" "cherry"]]
+  (= "false" (get-body (str "/buzzword/" non-buzzword))))
 
 (.println *test-out* "test.buzzer.rest-api:")
 (try 
