@@ -24,8 +24,7 @@
   (false? (buzzword? candidate buzzword)))
 
 (fact "find-buzzwords: a list of buzzwords found in the candidate"
-  [candidate ["apple ajax orange"]
-   found [["ajax"]]]
+  [[candidate found] {["apple ajax orange"] ["ajax"]}]
   (= found (find-buzzwords candidate buzzwords)))
 
 (.println *test-out* "buzzer:")
